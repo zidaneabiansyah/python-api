@@ -55,52 +55,12 @@ def operasi_matematika(a: int, b: int, op):
     return op(a, b)
 
 
-# 8. CLOSURE
+# 8. LAMBDA / ANONYMOUS FUNCTION
 
-def buat_counter():
-    counter = 0
-
-    def increment():
-        nonlocal counter
-        counter += 1
-        return counter
-
-    return increment
-
-
-# 9. LAMBDA / ANONYMOUS FUNCTION
-
-kali = lambda a, b: a + b  # ga usah dipake, cuma contoh
 kali = lambda a, b: a * b
 
 
-# 10. DECORATOR — fungsi yang membungkus fungsi lain
-
-def logger(func):
-    def wrapper(*args, **kwargs):
-        print(f"Memanggil {func.__name__} dengan {args} {kwargs}")
-        hasil = func(*args, **kwargs)
-        print(f"Hasil: {hasil}")
-        return hasil
-
-    return wrapper
-
-
-@logger
-def luas_lingkaran(r: float) -> float:
-    return 3.14 * r * r
-
-
-# 11. GENERATOR — fungsi yang yield
-
-def counter_atas(maks: int):
-    n = 0
-    while n <= maks:
-        yield n
-        n += 1
-
-
-# 12. TYPE HINT DENGAN UNION
+# 9. TYPE HINT DENGAN OPTIONAL
 
 from typing import Optional
 
@@ -156,21 +116,6 @@ def main():
 
     print("\nLAMBDA")
     print(f"4 * 5 = {kali(4, 5)}")
-
-    print("\nCLOSURE")
-    counter1 = buat_counter()
-    print(f"Counter 1: {counter1()}")
-    print(f"Counter 1: {counter1()}")
-    counter2 = buat_counter()
-    print(f"Counter 2: {counter2()}")
-    print(f"Counter 1 lagi: {counter1()}")
-
-    print("\nDECORATOR")
-    print(f"Luas lingkaran r=7: {luas_lingkaran(7)}")
-
-    print("\nGENERATOR")
-    for val in counter_atas(3):
-        print(f"Counter: {val}")
 
     print("\nTYPE HINT")
     siswa = cari_siswa("Budi")
